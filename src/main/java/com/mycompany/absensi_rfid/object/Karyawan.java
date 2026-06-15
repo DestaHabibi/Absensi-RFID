@@ -78,4 +78,8 @@ public class Karyawan {
         this.id_karyawan = id_karyawan;
     }
     
+    public String rfid_tag;
+    public String getRfidTag() {return rfid_tag; }
+    public void setRfidTag(String rfid_tag) {this.rfid_tag = rfid_tag; }
+    
 }

@@ -4,11 +4,16 @@
  */
 package com.mycompany.absensi_rfid.Dialog;
 
+import com.mycompany.absensi_rfid.object.Karyawan;
+import com.mycompany.absensi_rfid.service.KaryawanService;
 /**
  *
  * @author MyBook Hype AMD
  */
 public class EditKaryawan extends javax.swing.JDialog {
+    private KaryawanService service = new KaryawanService();
+    private String idKaryawan;
+    private String rfidTag;
 
     /**
      * Creates new form EditMahasiswa
@@ -69,7 +74,7 @@ public class EditKaryawan extends javax.swing.JDialog {
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D4 Teknik Informatika", "D4 Kebidanan", "D4 Akuntansi Sektor Publik ", "D3 Akuntansi", "D3 Teknik Elektro", "D3 Teknik Komputer", "D3 Desain Komunikasi Visual", "D3 Farmasi", "D3 Keperawatan" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk & Perencanaan (Tour Planner)", "Pemasaran & Penjualan (Marketing & Sales)", "Operasional (Tour & Travel Consultant)", "Lapangan (Tour Guide & Tour Leader)", "Administrasi & Keuangan", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -101,7 +106,7 @@ public class EditKaryawan extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 46, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel4)
@@ -140,7 +145,7 @@ public class EditKaryawan extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -154,12 +159,33 @@ public class EditKaryawan extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String idBaru = jTextField2.getText();
+        String nama = jTextField4.getText();
+        String divisi = jComboBox1.getSelectedItem().toString();
+        
+        Karyawan k = new Karyawan();
+        k.setId_karyawan(idBaru);
+        k.setNama(nama);
+        k.setDivisi(divisi);
+        //k.setRfidTag(rfidTag);
+        
+        service.updateKaryawan(idKaryawan, k);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public void setDataEdit(String id, String nama, String divisi) {
+        this.idKaryawan = id;
+        this.rfidTag = rfidTag;
+        jTextField2.setText(id);
+        jTextField4.setText(nama);
+        jComboBox1.setSelectedItem(divisi);
+       
+    }
     /**
      * @param args the command line arguments
      */

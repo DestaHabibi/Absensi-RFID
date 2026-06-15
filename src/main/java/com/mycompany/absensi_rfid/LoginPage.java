@@ -38,8 +38,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         linearPanel1 = new com.mycompany.absensi_rfid.panels.LinearPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -58,7 +57,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 50)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Harapan Bangsa");
+        jLabel1.setText("Vagabond Travel");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -68,26 +67,9 @@ public class LoginPage extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(35, 80, 0, 82);
         linearPanel1.add(jLabel1, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 35)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("UNIVERSITY");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 170, 145, 0);
-        linearPanel1.add(jLabel3, gridBagConstraints);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/61419839-7a23-4844-8c42-7305fd35c8ff_removalai_preview 1.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = -43;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(164, 100, 0, 0);
-        linearPanel1.add(jLabel2, gridBagConstraints);
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo trevel_copy.png"))); // NOI18N
+        linearPanel1.add(jLabel7, new java.awt.GridBagConstraints());
 
         getContentPane().add(linearPanel1);
 
@@ -251,11 +233,10 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private com.mycompany.absensi_rfid.panels.LinearPanel linearPanel1;
     private javax.swing.JButton loginbtn;

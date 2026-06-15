@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
  * @author MyBook Hype AMD
  */
 public class TambahKaryawan extends javax.swing.JDialog {
+    
+    private KaryawanService service = new KaryawanService();
 
     /**
      * Creates new form TambahMahasiswa
@@ -86,7 +88,7 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D4 Teknik Informatika", "D4 Kebidanan", "D4 Akuntansi Sektor Publik ", "D3 Akuntansi", "D3 Teknik Elektro", "D3 Teknik Komputer", "D3 Desain Komunikasi Visual", "D3 Farmasi", "D3 Keperawatan" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk & Perencanaan (Tour Planner)", "Pemasaran & Penjualan (Marketing & Sales)", "Operasional (Tour & Travel Consultant)", "Lapangan (Tour Guide & Tour Leader)", "Administrasi & Keuangan", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -175,11 +177,29 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nama = txtNama.getText();
+        String id = txtIDKaryawan.getText();
+        String divisi = jComboBox1.getSelectedItem().toString();
+        
+        if (nama.isEmpty() || id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nama dan ID tidak boleh kosong!");
+            return;
+        }
+        
+        Karyawan k = new Karyawan();
+        k.setNama(nama);
+        k.setId_karyawan(id);
+        k.setDivisi(divisi);
+        k.setRfidTag(id);
+        
+        service.simpanKaryawan(k);
+        dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtIDKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDKaryawanActionPerformed

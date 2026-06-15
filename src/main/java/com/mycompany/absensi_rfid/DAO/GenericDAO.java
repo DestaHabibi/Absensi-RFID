@@ -33,6 +33,10 @@ public class GenericDAO<T> implements BaseDAO<T> {
     public void update(Bson filter, T entity) {
         collection.replaceOne(filter, entity);
     }
+    
+    public void updateFields(Bson filter, Bson Update) {
+        collection.updateOne(filter, Update);
+    }
 
     @Override
     public void delete(Bson filter) {

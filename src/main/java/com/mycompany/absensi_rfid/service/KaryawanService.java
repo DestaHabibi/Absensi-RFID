@@ -51,6 +51,18 @@ public class KaryawanService {
         }
     }
     
+    public void simpanKaryawan(Karyawan k) {
+        try {
+            System.out.println("Menyimpan: " + k.toString());
+            DAO.save(k);
+            System.out.println("Berhasil disimpan! ");
+            JOptionPane.showMessageDialog(null, "Data karyawan berhasil ditambahkan!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal Simpan: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
     public void updateDashboardStats(JLabel lblTotal) {
         try {
             List<Karyawan> daftar = DAO.findAll();
@@ -80,17 +92,24 @@ public class KaryawanService {
         return results;
     }
     
-    public void updateKaryawan(Karyawan newK) {
-        Bson filter = Filters.eq("id_Karyawan", newK.getId_karyawan());
-        Karyawan k = DAO.findOne(filter);
-        if (k != null) {
-            DAO.update(filter, newK);
-            PanelDashboard.showData("");
+    public void updateKaryawan(String idLama, Karyawan newK) {
+        try {
+            Bson filter = Filters.eq("id_karyawan", idLama);
+            Bson update = com.mongodb.client.model.Updates.combine(
+                com.mongodb.client.model.Updates.set("id_karyawan", newK.getId_karyawan()),
+                com.mongodb.client.model.Updates.set("nama", newK.getNama()),
+                com.mongodb.client.model.Updates.set("divisi", newK.getDivisi())
+            );
+            DAO.updateFields(filter, update);
             JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal update: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+    
     public void hapusKaryawan(String idK) {
-        Bson filter = Filters.eq("id_Karyawan", idK);
+        Bson filter = Filters.eq("id_karyawan", idK);
         DAO.delete(filter); // Menggunakan deleteOne [6]
         PanelDashboard.showData("");
         JOptionPane.showMessageDialog(null, "Data karyawan berhasil dihapus.");

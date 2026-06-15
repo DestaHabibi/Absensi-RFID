@@ -4,10 +4,7 @@
 
 package com.mycompany.sistemrfid;
 
-/**
- *
- * @author lenovo cor i7
- */
+
 public class SistemRFID {
 
     public static void main(String[] args) {

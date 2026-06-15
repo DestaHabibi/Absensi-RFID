@@ -336,14 +336,15 @@ public class PanelDashboard extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pencarianField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(hapusBtn)
                         .addComponent(editBtn)
                         .addComponent(tambahBtn)
                         .addComponent(refreshBtn))
-                    .addComponent(cariBtn))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(pencarianField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cariBtn)))
                 .addGap(23, 23, 23))
         );
 
@@ -473,6 +474,21 @@ public class PanelDashboard extends javax.swing.JPanel {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
+        int baris = tblKaryawan.getSelectedRow();
+        
+        if (baris == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih karyawan yang ingin diedit!");
+            return;
+        }
+        
+        String id = tblKaryawan.getValueAt(baris, 0).toString();
+        String nama = tblKaryawan.getValueAt(baris, 1).toString();
+        String divisi = tblKaryawan.getValueAt(baris, 2).toString();
+        
+        EditKaryawan dialog = new EditKaryawan(null, true);
+        dialog.setDataEdit(id, nama, divisi);
+        dialog.setVisible(true);
+        showData("");
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void cariBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBtnActionPerformed
