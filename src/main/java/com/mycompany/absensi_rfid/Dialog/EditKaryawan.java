@@ -11,9 +11,10 @@ import com.mycompany.absensi_rfid.service.KaryawanService;
  * @author MyBook Hype AMD
  */
 public class EditKaryawan extends javax.swing.JDialog {
-    private KaryawanService service = new KaryawanService();
+   private KaryawanService service = new KaryawanService();
     private String idKaryawan;
     private String rfidTag;
+    private String statusKaryawan; // simpan status agar tidak hilang saat update
 
     /**
      * Creates new form EditMahasiswa
@@ -62,6 +63,11 @@ public class EditKaryawan extends javax.swing.JDialog {
         jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(51, 51, 51));
         jTextField2.setText("Id karyawan");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -106,23 +112,28 @@ public class EditKaryawan extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4)
-                        .addComponent(jTextField2)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(92, 92, 92))
-                        .addComponent(jLabel3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(92, 92, 92))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +156,7 @@ public class EditKaryawan extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -159,15 +170,18 @@ public class EditKaryawan extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String idBaru = jTextField2.getText();
-        String nama = jTextField4.getText();
+        String idBaru = jTextField2.getText().trim();
+        String nama = jTextField4.getText().trim();
         String divisi = jComboBox1.getSelectedItem().toString();
         
         Karyawan k = new Karyawan();
         k.setId_karyawan(idBaru);
         k.setNama(nama);
         k.setDivisi(divisi);
+        k.setStatus(statusKaryawan); // pertahankan status lama
+        k.setRfidTag(rfidTag);
         //k.setRfidTag(rfidTag);
+        
         
         service.updateKaryawan(idKaryawan, k);
         dispose();
@@ -178,13 +192,17 @@ public class EditKaryawan extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public void setDataEdit(String id, String nama, String divisi) {
-        this.idKaryawan = id;
-        this.rfidTag = rfidTag;
-        jTextField2.setText(id);
-        jTextField4.setText(nama);
-        jComboBox1.setSelectedItem(divisi);
-       
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    public void setDataEdit(Karyawan k) {
+        this.idKaryawan = k.getId_karyawan();
+        this.rfidTag = k.getRfidTag();
+        this.statusKaryawan = k.getStatus();
+        jTextField2.setText(k.getId_karyawan());
+        jTextField4.setText(k.getNama());
+        jComboBox1.setSelectedItem(k.getDivisi());
     }
     /**
      * @param args the command line arguments

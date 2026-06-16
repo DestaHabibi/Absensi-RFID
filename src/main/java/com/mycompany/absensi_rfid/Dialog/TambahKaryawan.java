@@ -177,8 +177,8 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String nama = txtNama.getText();
-        String id = txtIDKaryawan.getText();
+        String nama = txtNama.getText().trim();
+        String id = txtIDKaryawan.getText().trim();
         String divisi = jComboBox1.getSelectedItem().toString();
         
         if (nama.isEmpty() || id.isEmpty()) {
@@ -190,9 +190,11 @@ public class TambahKaryawan extends javax.swing.JDialog {
         k.setNama(nama);
         k.setId_karyawan(id);
         k.setDivisi(divisi);
-        k.setRfidTag(id);
+        k.setStatus("Aktif");
+        k.setRfidTag("");
         
         service.simpanKaryawan(k);
+        JOptionPane.showMessageDialog(this, "Data karyawan berhasil ditambahkan!");
         dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
