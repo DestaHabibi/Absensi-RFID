@@ -22,6 +22,24 @@ public class TambahKaryawan extends javax.swing.JDialog {
     public TambahKaryawan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        txtNama.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (txtNama.getText().equals("Nama Lengkap")) txtNama.setText("");
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (txtNama.getText().isEmpty()) txtNama.setText("Nama Lengkap");
+            }
+        });
+
+        txtIDKaryawan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (txtIDKaryawan.getText().equals("Id Karyawan")) txtIDKaryawan.setText("");
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (txtIDKaryawan.getText().isEmpty()) txtIDKaryawan.setText("Id Karyawan");
+            }
+        });
     }
 
     /**
@@ -44,6 +62,8 @@ public class TambahKaryawan extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +90,6 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         txtIDKaryawan.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         txtIDKaryawan.setForeground(new java.awt.Color(51, 51, 51));
-        txtIDKaryawan.setText("Id Karyawan");
         txtIDKaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDKaryawanActionPerformed(evt);
@@ -83,8 +102,12 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         txtNama.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         txtNama.setForeground(new java.awt.Color(51, 51, 51));
-        txtNama.setText("Nama Lengkap");
         txtNama.setToolTipText("");
+        txtNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamaActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
@@ -115,6 +138,16 @@ public class TambahKaryawan extends javax.swing.JDialog {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("RFID Number");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,7 +155,12 @@ public class TambahKaryawan extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel5)
                         .addComponent(jLabel4)
                         .addComponent(txtIDKaryawan)
                         .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
@@ -131,11 +169,8 @@ public class TambahKaryawan extends javax.swing.JDialog {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(92, 92, 92))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField2)))
                 .addGap(47, 47, 47))
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,14 +187,18 @@ public class TambahKaryawan extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIDKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(72, 72, 72)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -177,25 +216,56 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String nama = txtNama.getText().trim();
-        String id = txtIDKaryawan.getText().trim();
-        String divisi = jComboBox1.getSelectedItem().toString();
+        try {
+            String nama = txtNama.getText().trim();
+            String id = txtIDKaryawan.getText().trim();
+            String divisi = jComboBox1.getSelectedItem().toString();
+            String rfid = jTextField2.getText().trim();
         
-        if (nama.isEmpty() || id.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nama dan ID tidak boleh kosong!");
-            return;
+            System.out.println("=== DEBUG TAMBAH KARYAWAN ===");
+            System.out.println("Nama: " + nama);
+            System.out.println("ID: " + id);
+            System.out.println("Divisi: " + divisi);
+
+            if (nama.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Nama dan ID tidak boleh kosong!");
+                return;
+            }
+            if (id.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Id karyawan tidak boleh kosong!");
+                return;
+            }
+            if (divisi.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Divisi tidak boleh kosong!");
+                return;
+            }
+            if (rfid.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "RFID tidak boleh kosong!");
+                return;
+            }
+
+            Karyawan k = new Karyawan();
+            k.setNama(nama);
+            k.setId_karyawan(id);
+            k.setDivisi(divisi);
+            k.setStatus("Aktif");
+            k.setRfidTag(rfid);
+
+            System.out.println("Objek Karyawan: " + k.toString());
+            System.out.println("Mencoba simpan ke MongoDB...");
+
+
+            service.simpanKaryawan(k);
+
+            System.out.println("Berhasil disimpan!");
+            JOptionPane.showMessageDialog(this, "Data karyawan berhasil ditambahkan!");
+            dispose();
+            
+        } catch (Exception e) {
+            System.out.println("ERROR"+e.getMessage());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Gagal simpan: "+e.getMessage());
         }
-        
-        Karyawan k = new Karyawan();
-        k.setNama(nama);
-        k.setId_karyawan(id);
-        k.setDivisi(divisi);
-        k.setStatus("Aktif");
-        k.setRfidTag("");
-        
-        service.simpanKaryawan(k);
-        JOptionPane.showMessageDialog(this, "Data karyawan berhasil ditambahkan!");
-        dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -207,6 +277,14 @@ public class TambahKaryawan extends javax.swing.JDialog {
     private void txtIDKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDKaryawanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDKaryawanActionPerformed
+
+    private void txtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNamaActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,8 +337,10 @@ public class TambahKaryawan extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtIDKaryawan;
     private javax.swing.JTextField txtNama;
     // End of variables declaration//GEN-END:variables

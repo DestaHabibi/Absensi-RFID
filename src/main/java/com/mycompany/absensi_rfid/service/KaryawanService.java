@@ -5,9 +5,11 @@ import com.mycompany.absensi_rfid.DAO.GenericDAO;
 import com.mycompany.absensi_rfid.Dialog.EditKaryawan;
 import com.mycompany.absensi_rfid.panels.PanelDashboard;
 import com.mongodb.client.model.Filters;
+import com.mycompany.absensi_rfid.karyawan.KaryawanCard;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.lang.reflect.Field;
@@ -39,121 +41,36 @@ public class KaryawanService {
     // 2. READ: Tampilkan semua karyawan dalam bentuk grid panel
     // =====================================================================
     public void tampilKaryawan(JPanel panelTarget, String key) {
-        // Ambil data dari MongoDB
-        List<Karyawan> daftarKaryawan;
-        if (key.isEmpty()) {
-            daftarKaryawan = DAO.findAll();
-        } else {
-            daftarKaryawan = cariKaryawan(key);
-        }
- 
-        // Bersihkan panel target sebelum memuat data baru
-        panelTarget.removeAll();
-        panelTarget.setLayout(new BorderLayout());
-        panelTarget.setBackground(new Color(37, 44, 88));
- 
-        // Buat grid panel: 3 kolom, jarak antar card 10px
-        JPanel gridPanel = new JPanel(new GridLayout(0, 3, 10, 10));
-        gridPanel.setOpaque(false);
-        gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
- 
-        try {
-            for (Karyawan k : daftarKaryawan) {
-                // Card panel: 4 baris (ID, Nama, Divisi, tombol aksi)
-                JPanel cardPanel = new JPanel(new GridLayout(4, 1, 0, 5));
-                cardPanel.setBackground(new Color(43, 121, 221));
-                cardPanel.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(new Color(230, 231, 237), 1, true),
-                        BorderFactory.createEmptyBorder(15, 15, 15, 15)
-                ));
- 
-                JLabel lblID = new JLabel("ID: " + k.getId_karyawan());
-                lblID.setForeground(Color.WHITE);
-                lblID.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
- 
-                JLabel lblNama = new JLabel("Nama: " + k.getNama());
-                lblNama.setForeground(Color.WHITE);
-                lblNama.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));
- 
-                JLabel lblDivisi = new JLabel("Divisi: " + k.getDivisi());
-                lblDivisi.setForeground(new Color(200, 230, 255));
-                lblDivisi.setFont(new java.awt.Font("Arial", java.awt.Font.ITALIC, 11));
- 
-                // Panel tombol Edit & Hapus
-                JPanel controlPanel = new JPanel(new GridLayout(1, 2, 8, 0));
-                controlPanel.setBackground(new Color(43, 121, 221));
- 
-                JButton tombolEdit = new JButton("Edit");
-                tombolEdit.setBackground(new Color(255, 153, 0));
-                tombolEdit.setForeground(Color.WHITE);
-                tombolEdit.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 11));
-                tombolEdit.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                tombolEdit.setBorderPainted(false);
-                tombolEdit.addActionListener((ActionEvent e) -> {
-                    // Passing seluruh object Karyawan ke dialog edit (persis seperti dosen)
-                    EditKaryawan dialog = new EditKaryawan(null, true);
-                    dialog.setDataEdit(k);
-                    dialog.setVisible(true);
-                    PanelDashboard.showData("");
-                });
- 
-                JButton tombolHapus = new JButton("Hapus");
-                tombolHapus.setBackground(new Color(255, 0, 51));
-                tombolHapus.setForeground(Color.WHITE);
-                tombolHapus.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 11));
-                tombolHapus.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                tombolHapus.setBorderPainted(false);
-                tombolHapus.addActionListener((ActionEvent e) -> {
-                    Object[] options = {"Ya, Hapus", "Batal"};
-                    int choice = JOptionPane.showOptionDialog(
-                            null,
-                            "Apakah Anda yakin ingin menghapus " + k.getNama() + "?",
-                            "Konfirmasi Hapus",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE,
-                            null,
-                            options,
-                            options[0]
-                    );
-                    switch (choice) {
-                        case JOptionPane.YES_OPTION -> {
-                            hapusKaryawan(k.getId_karyawan());
-                            PanelDashboard.showData("");
-                        }
-                        case JOptionPane.NO_OPTION ->
-                            System.out.println("User memilih: Batal");
-                        default -> {
-                        }
-                    }
-                });
- 
-                controlPanel.add(tombolEdit);
-                controlPanel.add(tombolHapus);
- 
-                cardPanel.add(lblID);
-                cardPanel.add(lblNama);
-                cardPanel.add(lblDivisi);
-                cardPanel.add(controlPanel);
- 
-                gridPanel.add(cardPanel);
-            }
- 
-            if (daftarKaryawan.isEmpty()) {
-                JLabel lblKosong = new JLabel("Tidak ada data karyawan ditemukan.", JLabel.CENTER);
-                lblKosong.setForeground(Color.WHITE);
-                lblKosong.setFont(new java.awt.Font("Arial", java.awt.Font.ITALIC, 14));
-                panelTarget.add(lblKosong, BorderLayout.CENTER);
-            } else {
-                panelTarget.add(gridPanel, BorderLayout.NORTH);
-            }
- 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
- 
-        panelTarget.revalidate();
-        panelTarget.repaint();
+    List<Karyawan> daftarKaryawan;
+    if (key.isEmpty()) {
+        daftarKaryawan = DAO.findAll();
+    } else {
+        daftarKaryawan = cariKaryawan(key);
     }
+
+    panelTarget.removeAll();
+    panelTarget.setLayout(new BorderLayout());
+    panelTarget.setBackground(new Color(37, 44, 88));
+
+    JPanel gridPanel = new JPanel(new GridLayout(0, 3, 10, 10));
+    gridPanel.setOpaque(false);
+    gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+    if (daftarKaryawan.isEmpty()) {
+        JLabel lblKosong = new JLabel("Tidak ada data karyawan ditemukan.", JLabel.CENTER);
+        lblKosong.setForeground(Color.WHITE);
+        lblKosong.setFont(new Font("Arial", Font.ITALIC, 14));
+        panelTarget.add(lblKosong, BorderLayout.CENTER);
+    } else {
+        for (Karyawan k : daftarKaryawan) {
+            gridPanel.add(KaryawanCard.buildCard(k)); // pakai KaryawanCard
+        }
+        panelTarget.add(gridPanel, BorderLayout.NORTH);
+    }
+
+    panelTarget.revalidate();
+    panelTarget.repaint();
+}
  
     // =====================================================================
     // 3. UPDATE: Perbarui data karyawan
