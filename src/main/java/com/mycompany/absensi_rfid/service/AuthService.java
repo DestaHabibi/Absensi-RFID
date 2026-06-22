@@ -4,55 +4,42 @@
  */
 package com.mycompany.absensi_rfid.service;
 
-import com.mycompany.absensi_rfid.object.User;
+import com.mycompany.absensi_rfid.object.Admin;
 import com.mycompany.absensi_rfid.DAO.GenericDAO;
 import com.mycompany.absensi_rfid.util.SecurityUtils;
+import com.mycompany.absensi_rfid.Dashboard;
 import com.mongodb.client.model.Filters;
 import java.awt.Frame;
-import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
+import java.time.LocalDateTime;
 
-/**
- *
- * @author MyBook Hype AMD
- */
 public class AuthService {
-    private final GenericDAO<User> userDAO = new GenericDAO<>("users", User.class);
-    public void login(String username, String plainPassword, javax.swing.JFrame LoginPage){
+
+    private final GenericDAO<Admin> adminDAO = new GenericDAO<>("admin", Admin.class);
+
+    public void login(String username, String plainPassword, javax.swing.JFrame loginPage) {
+        // Hash password input
         String hashedInput = SecurityUtils.getHash(plainPassword, SecurityUtils.SHA_256);
-         User user = userDAO.findOne(Filters.and(
+
+        Admin admin = adminDAO.findOne(Filters.and(
                 Filters.eq("username", username),
                 Filters.eq("password", hashedInput)
         ));
+        
 
-        if (user != null) {
-            // Update lastLogin
-            user.setLastLogin(LocalDateTime.now());
-            userDAO.update(Filters.eq("username", username), user);
+        if (admin != null) {
 
-            JOptionPane.showMessageDialog(null, "Selamat Datang, " + user.getFullname());
-            
-            // Buka JFrame Dashboard Anda (sesuaikan nama class)
-            // Dashboard dashboard = new Dashboard();
-            // dashboard.setLocationRelativeTo(null);
-            // dashboard.setVisible(true);
-            // dashboard.setExtendedState(Frame.MAXIMIZED_BOTH);
-            LoginPage.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Selamat Datang, " + admin.getNama());
+            Dashboard dashboard = new Dashboard(admin);
+            dashboard.setLocationRelativeTo(null);
+            dashboard.setVisible(true);
+            dashboard.setExtendedState(Frame.MAXIMIZED_BOTH);
+            loginPage.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null,
                     "Username atau Password Salah!",
                     "Login Gagal",
                     JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void registerUser(String fullname, String username, String plainPassword) {
-        String hashedPassword = SecurityUtils.getHash(plainPassword, SecurityUtils.SHA_256);
-        User newUser = new User(fullname, username, hashedPassword, null);
-        try {
-            userDAO.save(newUser);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Gagal mendaftarkan user: " + e.getMessage());
         }
     }
 }

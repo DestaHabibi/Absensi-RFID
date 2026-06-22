@@ -169,34 +169,11 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         // TODO add your handling code here:
-        String usernameInput = txtUsername.getText();
-        String passwordInput = new String(txtPassword.getPassword());
-        
-        GenericDAO<Admin> adminDAO = new GenericDAO<>("admin", Admin.class);
-        
-        Bson loginFilter = and(
-                eq("username", usernameInput),
-                eq("password", passwordInput)
-        );
-        
-        Admin admin = adminDAO.findOne(loginFilter);
-        
-        if (admin != null) {
-            try {
-                JOptionPane.showMessageDialog(this, "Login Berhasil! Selamat Datang " + admin.getNama());
-                Dashboard dashboard = new Dashboard(admin);
-                dashboard.setLocationRelativeTo(null);
+    String username = txtUsername.getText();
+    String password = new String(txtPassword.getPassword());
 
-                dashboard.setVisible(true);
-
-                this.dispose();
-            } catch (Exception e) {
-                System.out.println("gagal db" + e.getMessage());
-                e.printStackTrace();
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Username atau Password Salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
-        }
+    AuthService authService = new AuthService();
+    authService.login(username, password, this);
     }//GEN-LAST:event_loginbtnActionPerformed
 
     /**

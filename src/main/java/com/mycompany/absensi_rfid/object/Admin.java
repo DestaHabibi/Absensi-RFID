@@ -4,6 +4,8 @@
  */
 package com.mycompany.absensi_rfid.object;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author MyBook Hype AMD
@@ -15,18 +17,20 @@ public class Admin {
     private String divisi;
     private String status;
     private String id_admin;
+    private LocalDateTime lastLogin;
     
     public Admin(){
         
     }
     
-    public Admin(String nama,String username, String divisi, String password, String status, String id_admin) {
+    public Admin(String nama,String username, String divisi, String password, String status, String id_admin, LocalDateTime lastLogin) {
         this.nama = nama;
         this.username = username;
         this.password = password;
         this.divisi = divisi;
         this.status = status;
         this.id_admin = id_admin;
+        this.lastLogin = lastLogin;
     }
     
     @Override
@@ -37,6 +41,7 @@ public class Admin {
                 ", divisi='" + divisi + '\'' +
                 ", status='" + status + '\'' +
                 ", id_admin='" + id_admin + '\'' +
+                ", lastLogin='" + lastLogin + '\''+
                 '}';
     }
 
@@ -86,5 +91,13 @@ public class Admin {
 
     public void setIdAdmin(String id_admin) {
         this.id_admin = id_admin;
+    }
+    
+    public LocalDateTime getLastLogin() {
+        return lastLogin;
+    }
+    
+    public void setLastLogin(LocalDateTime lasLogin) {
+        this.lastLogin = lasLogin;
     }
 }
