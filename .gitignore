@@ -1,0 +1,12 @@
+# Mengabaikan folder sampah kompilasi NetBeans/Maven
+**/target/
+/target/
+*.class
+
+# Mengabaikan file konfigurasi lokal milik masing-masing laptop
+/.nb-gradle/
+/nbproject/private/
+/build/
+*.jar
+*.war
+*.ear
