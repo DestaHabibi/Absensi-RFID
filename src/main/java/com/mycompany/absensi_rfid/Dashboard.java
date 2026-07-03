@@ -6,6 +6,8 @@ package com.mycompany.absensi_rfid;
 import com.mycompany.absensi_rfid.object.Admin;
 import com.mycompany.absensi_rfid.panels.PanelDashboard;
 import com.mycompany.absensi_rfid.AbsensiPage;
+import com.mycompany.absensi_rfid.service.I18nService;
+import java.util.Locale;
 /**
  *
  * @author MyBook Hype AMD
@@ -83,7 +85,8 @@ public class Dashboard extends javax.swing.JFrame {
         lblUsername.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(102, 102, 102));
         lblUsername.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblUsername.setText("Username");
+        lblUsername.setText(I18nService.get("ui.dashboard.username")
+        );
         lblUsername.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user2.png"))); // NOI18N
@@ -123,17 +126,17 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Menu");
+        jLabel4.setText(I18nService.get("ui.dashboard.menu"));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Account");
+        jLabel6.setText(I18nService.get("ui.dashboard.account"));
 
         dashboardBtn.setBackground(new java.awt.Color(43, 121, 221));
         dashboardBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         dashboardBtn.setForeground(new java.awt.Color(255, 255, 255));
-        dashboardBtn.setText("Dashboard");
+        dashboardBtn.setText(I18nService.get("ui.dashboard.dashboard"));
         dashboardBtn.setBorderPainted(false);
         dashboardBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         dashboardBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +148,7 @@ public class Dashboard extends javax.swing.JFrame {
         absensibtn.setBackground(new java.awt.Color(43, 121, 221));
         absensibtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         absensibtn.setForeground(new java.awt.Color(255, 255, 255));
-        absensibtn.setText("Absensi");
+        absensibtn.setText(I18nService.get("ui.dashboard.absensi"));
         absensibtn.setBorderPainted(false);
         absensibtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         absensibtn.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +160,7 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardBtn2.setBackground(new java.awt.Color(43, 121, 221));
         dashboardBtn2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         dashboardBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        dashboardBtn2.setText("Laporan");
+        dashboardBtn2.setText(I18nService.get("ui.dashboard.laporan"));
         dashboardBtn2.setBorderPainted(false);
         dashboardBtn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         dashboardBtn2.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +172,7 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardBtn3.setBackground(new java.awt.Color(43, 121, 221));
         dashboardBtn3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         dashboardBtn3.setForeground(new java.awt.Color(255, 255, 255));
-        dashboardBtn3.setText("Log Out");
+        dashboardBtn3.setText(I18nService.get("ui.dashboard.logout"));
         dashboardBtn3.setBorderPainted(false);
         dashboardBtn3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         dashboardBtn3.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +238,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void absensibtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_absensibtnActionPerformed
         // TODO add your handling code here:
-        
+        AbsensiPage absensi = new AbsensiPage();
+        absensi.setLocationRelativeTo(null);
+        absensi.setVisible(true);
     }//GEN-LAST:event_absensibtnActionPerformed
 
     private void dashboardBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtn2ActionPerformed
@@ -245,18 +250,18 @@ public class Dashboard extends javax.swing.JFrame {
     private void dashboardBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtn3ActionPerformed
         // TODO add your handling code here:
         int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
-            "Apakah Anda yakin ingin keluar?", "Konfirmasi Logout", 
+            I18nService.get("ui.dashboard.logoutconfirm.message"),
+            I18nService.get("ui.dashboard.logoutconfirm.title"),
             javax.swing.JOptionPane.YES_NO_OPTION);
-
         if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-        LoginPage login = new LoginPage();
-        
-        login.setLocationRelativeTo(null);
+            LoginPage login = new LoginPage();
 
-        login.setVisible(true);
+            login.setLocationRelativeTo(null);
 
-        this.dispose();
-    }
+            login.setVisible(true);
+
+            this.dispose();
+        }
     }//GEN-LAST:event_dashboardBtn3ActionPerformed
 
     /**

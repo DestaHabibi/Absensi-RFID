@@ -14,12 +14,14 @@ import com.mycompany.absensi_rfid.Dashboard;
 import com.mycompany.absensi_rfid.service.AuthService;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
+import com.mycompany.absensi_rfid.service.I18nService;
+import java.util.Locale;
 
 /**
  *
  * @author MyBook Hype AMD
  */
-public class LoginPage extends javax.swing.JFrame {
+public class LoginPage extends javax.swing.JFrame implements I18nService.I18nChangeListener {
 
     /**
      * Creates new form LoginPage
@@ -27,6 +29,16 @@ public class LoginPage extends javax.swing.JFrame {
     public LoginPage() {
         initComponents();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        I18nService.registerListener(this);
+    }
+    @Override
+    public void onLanguageChanged(){
+        java.awt.EventQueue.invokeLater(() -> {
+            jLabel4.setText(I18nService.get("ui.login.title"));
+            jLabel5.setText(I18nService.get("ui.login.username"));
+            jLabel6.setText(I18nService.get("ui.login.password"));
+            loginbtn.setText(I18nService.get("ui.login.button"));
+        });
     }
 
     /**
@@ -49,6 +61,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         loginbtn = new javax.swing.JButton();
+        cbLanguage = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
@@ -82,26 +95,25 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 35)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(43, 121, 221));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("LOGIN");
+        jLabel4.setText(I18nService.get("ui.login.title"));
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel4.setIconTextGap(6);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(221, 52, 0, 0);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 362;
+        gridBagConstraints.insets = new java.awt.Insets(81, 47, 0, 39);
         jPanel2.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Username");
+        jLabel5.setText(I18nService.get("ui.login.username"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 44, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(39, 47, 0, 0);
         jPanel2.add(jLabel5, gridBagConstraints);
 
         txtUsername.setForeground(new java.awt.Color(51, 51, 51));
@@ -112,37 +124,38 @@ public class LoginPage extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 393;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 515;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 44, 0, 42);
+        gridBagConstraints.insets = new java.awt.Insets(6, 47, 0, 39);
         jPanel2.add(txtUsername, gridBagConstraints);
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Password");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 44, 0, 0);
-        jPanel2.add(jLabel6, gridBagConstraints);
+        jLabel6.setText(I18nService.get("ui.login.password")
+        );
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 393;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 47, 0, 0);
+        jPanel2.add(jLabel6, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 515;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 44, 0, 42);
+        gridBagConstraints.insets = new java.awt.Insets(6, 47, 0, 39);
         jPanel2.add(txtPassword, gridBagConstraints);
 
         loginbtn.setBackground(new java.awt.Color(43, 121, 221));
         loginbtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         loginbtn.setForeground(new java.awt.Color(255, 255, 255));
-        loginbtn.setText("Log in");
+        loginbtn.setText(I18nService.get("ui.login.button"));
         loginbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,12 +164,25 @@ public class LoginPage extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 44, 239, 0);
+        gridBagConstraints.insets = new java.awt.Insets(29, 47, 239, 0);
         jPanel2.add(loginbtn, gridBagConstraints);
+
+        cbLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "en", "ms" }));
+        cbLanguage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLanguageActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(109, 386, 0, 39);
+        jPanel2.add(cbLanguage, gridBagConstraints);
 
         getContentPane().add(jPanel2);
 
@@ -175,6 +201,12 @@ public class LoginPage extends javax.swing.JFrame {
     AuthService authService = new AuthService();
     authService.login(username, password, this);
     }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void cbLanguageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLanguageActionPerformed
+        // TODO add your handling code here:
+        String kode = (String) cbLanguage.getSelectedItem();
+        I18nService.setLocale(Locale.of(kode));
+    }//GEN-LAST:event_cbLanguageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +244,7 @@ public class LoginPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbLanguage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -224,4 +257,3 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
-

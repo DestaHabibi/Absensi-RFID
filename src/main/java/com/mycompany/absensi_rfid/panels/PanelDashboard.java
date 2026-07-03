@@ -37,7 +37,6 @@ public class PanelDashboard extends javax.swing.JPanel {
     public static void showData(String keyword){
         KaryawanService service = new KaryawanService();
         service.tampilKaryawan(contentPanel, keyword);
-        service.updateDashboardStats(lblTotal);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,25 +51,13 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel69 = new javax.swing.JPanel();
-        jLabel180 = new javax.swing.JLabel();
-        lblTotal = new javax.swing.JLabel();
-        jLabel182 = new javax.swing.JLabel();
-        jPanel70 = new javax.swing.JPanel();
-        jLabel184 = new javax.swing.JLabel();
-        jLabel185 = new javax.swing.JLabel();
-        jLabel189 = new javax.swing.JLabel();
-        jPanel71 = new javax.swing.JPanel();
-        jLabel187 = new javax.swing.JLabel();
-        jLabel188 = new javax.swing.JLabel();
-        jLabel190 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         tambahBtn = new javax.swing.JButton();
         pencarianField = new javax.swing.JTextField();
         cariBtn = new javax.swing.JButton();
         refreshBtn = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
 
@@ -106,143 +93,6 @@ public class PanelDashboard extends javax.swing.JPanel {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1071, 110));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
-
-        jPanel69.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel69.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(230, 231, 237), new java.awt.Color(230, 231, 237)));
-        jPanel69.setForeground(new java.awt.Color(37, 44, 88));
-        jPanel69.setPreferredSize(new java.awt.Dimension(224, 88));
-
-        jLabel180.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
-        jLabel180.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel180.setText("Total Karyawan");
-
-        lblTotal.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
-        lblTotal.setForeground(new java.awt.Color(37, 44, 88));
-        lblTotal.setText("200");
-
-        jLabel182.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Group 8934.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel69Layout = new javax.swing.GroupLayout(jPanel69);
-        jPanel69.setLayout(jPanel69Layout);
-        jPanel69Layout.setHorizontalGroup(
-            jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel69Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTotal)
-                    .addComponent(jLabel180, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(58, 58, 58)
-                .addComponent(jLabel182)
-                .addGap(35, 35, 35))
-        );
-        jPanel69Layout.setVerticalGroup(
-            jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel69Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(lblTotal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel180)
-                .addGap(20, 20, 20))
-            .addGroup(jPanel69Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel182)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel69);
-
-        jPanel70.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel70.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(230, 231, 237), new java.awt.Color(230, 231, 237)));
-        jPanel70.setForeground(new java.awt.Color(37, 44, 88));
-        jPanel70.setPreferredSize(new java.awt.Dimension(224, 88));
-
-        jLabel184.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
-        jLabel184.setForeground(new java.awt.Color(37, 44, 88));
-        jLabel184.setText("-");
-
-        jLabel185.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Group 8934.png"))); // NOI18N
-
-        jLabel189.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
-        jLabel189.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel189.setText("Karyawan Hadir");
-
-        javax.swing.GroupLayout jPanel70Layout = new javax.swing.GroupLayout(jPanel70);
-        jPanel70.setLayout(jPanel70Layout);
-        jPanel70Layout.setHorizontalGroup(
-            jPanel70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel70Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel189)
-                    .addComponent(jLabel184))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(jLabel185)
-                .addGap(39, 39, 39))
-        );
-        jPanel70Layout.setVerticalGroup(
-            jPanel70Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel70Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel184)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel189)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel70Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel185)
-                .addGap(30, 30, 30))
-        );
-
-        jPanel1.add(jPanel70);
-
-        jPanel71.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel71.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(230, 231, 237), new java.awt.Color(230, 231, 237)));
-        jPanel71.setForeground(new java.awt.Color(37, 44, 88));
-        jPanel71.setPreferredSize(new java.awt.Dimension(224, 88));
-
-        jLabel187.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
-        jLabel187.setForeground(new java.awt.Color(37, 44, 88));
-        jLabel187.setText("-");
-
-        jLabel188.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Group 8934.png"))); // NOI18N
-
-        jLabel190.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
-        jLabel190.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel190.setText("Karyawan Absen");
-
-        javax.swing.GroupLayout jPanel71Layout = new javax.swing.GroupLayout(jPanel71);
-        jPanel71.setLayout(jPanel71Layout);
-        jPanel71Layout.setHorizontalGroup(
-            jPanel71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel71Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel190)
-                    .addComponent(jLabel187))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jLabel188)
-                .addGap(37, 37, 37))
-        );
-        jPanel71Layout.setVerticalGroup(
-            jPanel71Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel71Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel187)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel190)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel71Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel188)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel1.add(jPanel71);
-
-        jPanel3.add(jPanel1, java.awt.BorderLayout.PAGE_START);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(861, 85));
@@ -321,7 +171,12 @@ public class PanelDashboard extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
 
-        jPanel5.add(jPanel4, java.awt.BorderLayout.PAGE_START);
+        jPanel1.add(jPanel4);
+
+        jPanel3.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setLayout(new java.awt.BorderLayout());
         jPanel6.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -359,14 +214,6 @@ public class PanelDashboard extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cariBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel180;
-    private javax.swing.JLabel jLabel182;
-    private javax.swing.JLabel jLabel184;
-    private javax.swing.JLabel jLabel185;
-    private javax.swing.JLabel jLabel187;
-    private javax.swing.JLabel jLabel188;
-    private javax.swing.JLabel jLabel189;
-    private javax.swing.JLabel jLabel190;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -374,11 +221,7 @@ public class PanelDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel69;
-    private javax.swing.JPanel jPanel70;
-    private javax.swing.JPanel jPanel71;
     private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JLabel lblTotal;
     private javax.swing.JTextField pencarianField;
     private javax.swing.JButton refreshBtn;
     private javax.swing.JButton tambahBtn;
