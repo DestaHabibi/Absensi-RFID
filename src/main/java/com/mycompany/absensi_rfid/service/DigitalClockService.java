@@ -35,7 +35,7 @@ public class DigitalClockService {
                     // Update label secara asinkron
                     targetLabel.setText(timeFormatted);
                     
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 }
             } catch (InterruptedException e) {
                 // Penanganan saat thread di-track dan dihentikan sengaja

@@ -124,4 +124,8 @@ public class KaryawanService {
             e.printStackTrace();
         }
     }
+    public Karyawan findByUid(String hashedUid) {
+        Bson filter = Filters.eq("rfidTag", hashedUid);
+        return DAO.findOne(filter);
+    }
 }

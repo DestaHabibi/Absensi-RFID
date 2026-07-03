@@ -151,7 +151,7 @@
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="dashboardBtn" pref="175" max="32767" attributes="0"/>
-                              <Component id="dashboardBtn1" pref="175" max="32767" attributes="0"/>
+                              <Component id="absensibtn" pref="175" max="32767" attributes="0"/>
                               <Component id="dashboardBtn2" pref="175" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -178,7 +178,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="dashboardBtn" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="dashboardBtn1" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="absensibtn" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
                   <Component id="dashboardBtn2" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -234,7 +234,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dashboardBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="dashboardBtn1">
+        <Component class="javax.swing.JButton" name="absensibtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="dd" green="79" red="2b" type="rgb"/>
@@ -250,7 +250,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dashboardBtn1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="absensibtnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="dashboardBtn2">

@@ -5,6 +5,7 @@
 package com.mycompany.absensi_rfid;
 import com.mycompany.absensi_rfid.object.Admin;
 import com.mycompany.absensi_rfid.panels.PanelDashboard;
+import com.mycompany.absensi_rfid.AbsensiPage;
 /**
  *
  * @author MyBook Hype AMD
@@ -26,15 +27,16 @@ public class Dashboard extends javax.swing.JFrame {
         tampilkanPanelDashboard();
     }
     private void tampilkanPanelDashboard() {
-    jPanel3.removeAll();
-    jPanel3.setLayout(new java.awt.BorderLayout());
+        jPanel3.removeAll();
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        PanelDashboard pnlDashboard = new PanelDashboard();
+
+        jPanel3.add(pnlDashboard, java.awt.BorderLayout.CENTER);
+        jPanel3.revalidate();
+        jPanel3.repaint();
+    }
     
-    PanelDashboard pnlDashboard = new PanelDashboard();
-    
-    jPanel3.add(pnlDashboard, java.awt.BorderLayout.CENTER);
-    jPanel3.revalidate();
-    jPanel3.repaint();
-}
     public Dashboard(){
         initComponents();    
         
@@ -59,7 +61,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         dashboardBtn = new javax.swing.JButton();
-        dashboardBtn1 = new javax.swing.JButton();
+        absensibtn = new javax.swing.JButton();
         dashboardBtn2 = new javax.swing.JButton();
         dashboardBtn3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -140,15 +142,15 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        dashboardBtn1.setBackground(new java.awt.Color(43, 121, 221));
-        dashboardBtn1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        dashboardBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        dashboardBtn1.setText("Absensi");
-        dashboardBtn1.setBorderPainted(false);
-        dashboardBtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        dashboardBtn1.addActionListener(new java.awt.event.ActionListener() {
+        absensibtn.setBackground(new java.awt.Color(43, 121, 221));
+        absensibtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        absensibtn.setForeground(new java.awt.Color(255, 255, 255));
+        absensibtn.setText("Absensi");
+        absensibtn.setBorderPainted(false);
+        absensibtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        absensibtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dashboardBtn1ActionPerformed(evt);
+                absensibtnActionPerformed(evt);
             }
         });
 
@@ -189,7 +191,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(dashboardBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(dashboardBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(absensibtn, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                             .addComponent(dashboardBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -208,7 +210,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dashboardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(dashboardBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(absensibtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(dashboardBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
@@ -231,9 +233,10 @@ public class Dashboard extends javax.swing.JFrame {
         tampilkanPanelDashboard();
     }//GEN-LAST:event_dashboardBtnActionPerformed
 
-    private void dashboardBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtn1ActionPerformed
+    private void absensibtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_absensibtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dashboardBtn1ActionPerformed
+        
+    }//GEN-LAST:event_absensibtnActionPerformed
 
     private void dashboardBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtn2ActionPerformed
         // TODO add your handling code here:
@@ -292,8 +295,8 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton absensibtn;
     private javax.swing.JButton dashboardBtn;
-    private javax.swing.JButton dashboardBtn1;
     private javax.swing.JButton dashboardBtn2;
     private javax.swing.JButton dashboardBtn3;
     private javax.swing.JLabel jLabel1;
