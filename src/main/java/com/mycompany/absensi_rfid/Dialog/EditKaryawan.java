@@ -6,6 +6,8 @@ package com.mycompany.absensi_rfid.Dialog;
 
 import com.mycompany.absensi_rfid.object.Karyawan;
 import com.mycompany.absensi_rfid.service.KaryawanService;
+import com.mycompany.absensi_rfid.service.I18nService;
+
 /**
  *
  * @author MyBook Hype AMD
@@ -22,6 +24,19 @@ public class EditKaryawan extends javax.swing.JDialog {
     public EditKaryawan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        jComboBox1.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                    int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof String key) {
+                    setText(I18nService.get(key));
+                }
+                return this;
+            }
+        });
+ 
     }
 
     /**
@@ -50,15 +65,15 @@ public class EditKaryawan extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Edit Data karyawan");
+        jLabel1.setText(I18nService.get("ui.editemp.title"));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Nama:");
+        jLabel2.setText(I18nService.get("ui.editemp.name"));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("ID Karyawan");
+        jLabel3.setText(I18nService.get("ui.editemp.id"));
 
         jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(51, 51, 51));
@@ -71,7 +86,7 @@ public class EditKaryawan extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Divisi");
+        jLabel4.setText(I18nService.get("ui.editemp.division"));
 
         jTextField4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
@@ -80,7 +95,7 @@ public class EditKaryawan extends javax.swing.JDialog {
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk & Perencanaan (Tour Planner)", "Pemasaran & Penjualan (Marketing & Sales)", "Operasional (Tour & Travel Consultant)", "Lapangan (Tour Guide & Tour Leader)", "Administrasi & Keuangan", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ui.dept.produk", "ui.dept.marketing", "ui.dept.operasional", "ui.dept.lapangan", "ui.dept.administrasi"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -90,7 +105,7 @@ public class EditKaryawan extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(43, 121, 221));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Simpan");
+        jButton1.setText(I18nService.get("ui.btn.save"));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -100,7 +115,7 @@ public class EditKaryawan extends javax.swing.JDialog {
         jButton2.setBackground(new java.awt.Color(255, 0, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Kembali");
+        jButton2.setText(I18nService.get("ui.btn.back"));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

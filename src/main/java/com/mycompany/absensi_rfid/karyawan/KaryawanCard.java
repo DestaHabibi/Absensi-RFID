@@ -36,7 +36,7 @@ public class KaryawanCard {
         lblNama.setForeground(Color.WHITE);
         lblNama.setFont(new Font("Arial", Font.PLAIN, 12));
 
-        JLabel lblDivisi = new JLabel(I18nService.get("ui.card.division") + k.getDivisi());
+        JLabel lblDivisi = new JLabel(I18nService.get("ui.card.division") + I18nService.get(k.getDivisi()));
         lblDivisi.setForeground(new Color(200, 230, 255));
         lblDivisi.setFont(new Font("Arial", Font.ITALIC, 11));
 
