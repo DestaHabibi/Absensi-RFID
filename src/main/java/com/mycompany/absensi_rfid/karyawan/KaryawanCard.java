@@ -11,6 +11,8 @@ import com.mycompany.absensi_rfid.service.KaryawanService;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import com.mycompany.absensi_rfid.service.I18nService;
+import java.text.MessageFormat;
 /**
  *
  * @author MyBook Hype AMD
@@ -26,15 +28,15 @@ public class KaryawanCard {
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
 
-        JLabel lblID = new JLabel("ID: " + k.getId_karyawan());
+        JLabel lblID = new JLabel(I18nService.get("ui.card.id") + k.getId_karyawan());
         lblID.setForeground(Color.WHITE);
         lblID.setFont(new Font("Arial", Font.BOLD, 12));
 
-        JLabel lblNama = new JLabel("Nama: " + k.getNama());
+        JLabel lblNama = new JLabel(I18nService.get("ui.card.name") + k.getNama());
         lblNama.setForeground(Color.WHITE);
         lblNama.setFont(new Font("Arial", Font.PLAIN, 12));
 
-        JLabel lblDivisi = new JLabel("Divisi: " + k.getDivisi());
+        JLabel lblDivisi = new JLabel(I18nService.get("ui.card.division") + k.getDivisi());
         lblDivisi.setForeground(new Color(200, 230, 255));
         lblDivisi.setFont(new Font("Arial", Font.ITALIC, 11));
 
@@ -42,7 +44,7 @@ public class KaryawanCard {
         JPanel controlPanel = new JPanel(new GridLayout(1, 2, 8, 0));
         controlPanel.setBackground(new Color(43, 121, 221));
 
-        JButton tombolEdit = new JButton("Edit");
+        JButton tombolEdit = new JButton(I18nService.get("ui.card.edit"));
         tombolEdit.setBackground(new Color(255, 153, 0));
         tombolEdit.setForeground(Color.WHITE);
         tombolEdit.setFont(new Font("Arial", Font.BOLD, 11));
@@ -55,29 +57,30 @@ public class KaryawanCard {
             PanelDashboard.showData("");
         });
 
-        JButton tombolHapus = new JButton("Hapus");
+        JButton tombolHapus = new JButton(I18nService.get("ui.card.delete"));
         tombolHapus.setBackground(new Color(255, 0, 51));
         tombolHapus.setForeground(Color.WHITE);
         tombolHapus.setFont(new Font("Arial", Font.BOLD, 11));
         tombolHapus.setCursor(new Cursor(Cursor.HAND_CURSOR));
         tombolHapus.setBorderPainted(false);
         tombolHapus.addActionListener((ActionEvent e) -> {
-            Object[] options = {"Ya, Hapus", "Batal"};
-            int choice = JOptionPane.showOptionDialog(
-                    null,
-                    "Apakah Anda yakin ingin menghapus " + k.getNama() + "?",
-                    "Konfirmasi Hapus",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]
-            );
-            if (choice == JOptionPane.YES_OPTION) {
-                KaryawanService service = new KaryawanService();
-                service.hapusKaryawan(k.getId_karyawan());
-                PanelDashboard.showData("");
-            }
+                Object[] options = {I18nService.get("ui.card.confirmyes"), I18nService.get("ui.card.confirmno")};
+                    String message = MessageFormat.format(I18nService.get("ui.card.deletemessage"), k.getNama());
+                    int choice = JOptionPane.showOptionDialog(
+                            null,
+                            message,
+                            I18nService.get("ui.card.deletetitle"),
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            options[0]
+                    );
+                if (choice == JOptionPane.YES_OPTION) {
+                    KaryawanService service = new KaryawanService();
+                    service.hapusKaryawan(k.getId_karyawan());
+                    PanelDashboard.showData("");
+                }
         });
 
         controlPanel.add(tombolEdit);

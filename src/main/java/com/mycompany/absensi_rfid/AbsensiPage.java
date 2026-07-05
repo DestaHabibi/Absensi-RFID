@@ -31,6 +31,8 @@ public class AbsensiPage extends javax.swing.JFrame {
      */
     public AbsensiPage() {
         initComponents();
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        this.setResizable(false);
         initClock(jLabel4);
         initDate(jLabel2);
         setupAttendanceWorkflow();
@@ -169,15 +171,18 @@ public class AbsensiPage extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText(I18nService.get("ui.attendance.tapcard"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 200;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 517, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 246, 0, 0);
         jPanel2.add(jLabel3, gridBagConstraints);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -187,10 +192,10 @@ public class AbsensiPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 282;
+        gridBagConstraints.ipadx = 423;
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 364, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 246, 0, 0);
         jPanel2.add(jTextField1, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(54, 120, 218));
@@ -281,23 +286,23 @@ public class AbsensiPage extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.ipady = 46;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 255, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 248, 0, 0);
         jPanel2.add(jPanel3, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Senin, 27 Januari 2007");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 9, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 102, 0, 0);
         jPanel2.add(jLabel2, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("00:00:00");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
@@ -316,10 +321,9 @@ public class AbsensiPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -11;
         gridBagConstraints.ipady = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(32, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 6, 0, 0);
         jPanel2.add(btnSubmit, gridBagConstraints);
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
@@ -332,7 +336,7 @@ public class AbsensiPage extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
