@@ -7,6 +7,9 @@ package com.mycompany.absensi_rfid.Dialog;
 import com.mycompany.absensi_rfid.object.Karyawan;
 import com.mycompany.absensi_rfid.service.KaryawanService;
 import javax.swing.JOptionPane;
+import com.mycompany.absensi_rfid.service.I18nService;
+import java.text.MessageFormat;
+
 
 /**
  *
@@ -25,19 +28,19 @@ public class TambahKaryawan extends javax.swing.JDialog {
         
         txtNama.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent e) {
-                if (txtNama.getText().equals("Nama Lengkap")) txtNama.setText("");
+                if (txtNama.getText().equals(I18nService.get("ui.addemp.placeholder.name"))) txtNama.setText("");
             }
             public void focusLost(java.awt.event.FocusEvent e) {
-                if (txtNama.getText().isEmpty()) txtNama.setText("Nama Lengkap");
+                if (txtNama.getText().isEmpty()) txtNama.setText(I18nService.get("ui.addemp.placeholder.name"));
             }
         });
 
         txtIDKaryawan.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent e) {
-                if (txtIDKaryawan.getText().equals("Id Karyawan")) txtIDKaryawan.setText("");
+                if (txtIDKaryawan.getText().equals(I18nService.get("ui.addemp.placeholder.id"))) txtIDKaryawan.setText("");
             }
             public void focusLost(java.awt.event.FocusEvent e) {
-                if (txtIDKaryawan.getText().isEmpty()) txtIDKaryawan.setText("Id Karyawan");
+                if (txtIDKaryawan.getText().isEmpty()) txtIDKaryawan.setText(I18nService.get("ui.addemp.placeholder.id"));
             }
         });
     }
@@ -78,15 +81,16 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Tambah Data Karyawan");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText(I18nService.get("ui.addemp.title"));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Nama:");
+        jLabel2.setText(I18nService.get("ui.addemp.name"));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("ID Karyawan");
+        jLabel3.setText(I18nService.get("ui.addemp.id"));
 
         txtIDKaryawan.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         txtIDKaryawan.setForeground(new java.awt.Color(51, 51, 51));
@@ -98,7 +102,7 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Divisi");
+        jLabel4.setText(I18nService.get("ui.addemp.division"));
 
         txtNama.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         txtNama.setForeground(new java.awt.Color(51, 51, 51));
@@ -111,7 +115,18 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk & Perencanaan (Tour Planner)", "Pemasaran & Penjualan (Marketing & Sales)", "Operasional (Tour & Travel Consultant)", "Lapangan (Tour Guide & Tour Leader)", "Administrasi & Keuangan", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ui.dept.produk", "ui.dept.marketing", "ui.dept.operasional", "ui.dept.lapangan", "ui.dept.administrasi"}));
+        jComboBox1.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof String key) {
+                    setText(I18nService.get(key));
+                }
+                return this;
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -121,7 +136,7 @@ public class TambahKaryawan extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(43, 121, 221));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Simpan");
+        jButton1.setText(I18nService.get("ui.btn.save"));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -131,7 +146,7 @@ public class TambahKaryawan extends javax.swing.JDialog {
         jButton2.setBackground(new java.awt.Color(255, 0, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Kembali");
+        jButton2.setText(I18nService.get("ui.btn.back"));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -140,7 +155,7 @@ public class TambahKaryawan extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("RFID Number");
+        jLabel5.setText(I18nService.get("ui.addemp.rfid"));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,12 +181,13 @@ public class TambahKaryawan extends javax.swing.JDialog {
                         .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(92, 92, 92))
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField2)))
                 .addGap(47, 47, 47))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +236,8 @@ public class TambahKaryawan extends javax.swing.JDialog {
             String nama = txtNama.getText().trim();
             String id = txtIDKaryawan.getText().trim();
             String divisi = jComboBox1.getSelectedItem().toString();
-            String rfid = jTextField2.getText().trim();
+            String rfidMentah = jTextField2.getText().trim();
+            String rfid = com.mycompany.absensi_rfid.util.SecurityUtils.getHash(rfidMentah, com.mycompany.absensi_rfid.util.SecurityUtils.SHA_256);
         
             System.out.println("=== DEBUG TAMBAH KARYAWAN ===");
             System.out.println("Nama: " + nama);
@@ -228,19 +245,19 @@ public class TambahKaryawan extends javax.swing.JDialog {
             System.out.println("Divisi: " + divisi);
 
             if (nama.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Nama dan ID tidak boleh kosong!");
+                JOptionPane.showMessageDialog(this, I18nService.get("ui.addemp.error.nameid"));
                 return;
             }
             if (id.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Id karyawan tidak boleh kosong!");
+                JOptionPane.showMessageDialog(this, I18nService.get("ui.addemp.error.id"));
                 return;
             }
             if (divisi.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Divisi tidak boleh kosong!");
+                JOptionPane.showMessageDialog(this, I18nService.get("ui.addemp.error.division"));
                 return;
             }
             if (rfid.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "RFID tidak boleh kosong!");
+                JOptionPane.showMessageDialog(this, I18nService.get("ui.addemp.error.rfid"));
                 return;
             }
 
@@ -258,13 +275,13 @@ public class TambahKaryawan extends javax.swing.JDialog {
             service.simpanKaryawan(k);
 
             System.out.println("Berhasil disimpan!");
-            JOptionPane.showMessageDialog(this, "Data karyawan berhasil ditambahkan!");
+            JOptionPane.showMessageDialog(this, I18nService.get("ui.addemp.success"));
             dispose();
             
         } catch (Exception e) {
             System.out.println("ERROR"+e.getMessage());
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Gagal simpan: "+e.getMessage());
+            JOptionPane.showMessageDialog(this, MessageFormat.format(I18nService.get("ui.addemp.error.save"), e.getMessage()));
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

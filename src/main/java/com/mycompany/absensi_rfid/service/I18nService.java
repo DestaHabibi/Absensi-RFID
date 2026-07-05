@@ -41,6 +41,9 @@ public class I18nService {
             return "!" + key + "!";
         }
     }
+    public static Locale getCurrentLocale() {
+        return currentLocale;
+    }
 
     public static synchronized void registerListener(I18nChangeListener l) {
         if (!listeners.contains(l)) listeners.add(l);

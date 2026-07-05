@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.JLabel;
+import com.mycompany.absensi_rfid.service.I18nService;
 
 public class DigitalClockService {
 
@@ -26,7 +27,7 @@ public class DigitalClockService {
     
     public Thread getThread() {
         Runnable clockTask = () -> {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, Locale.of("id", "ID"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, I18nService.getCurrentLocale());
             try {
                 while (!Thread.currentThread().isInterrupted()) {
                     LocalDateTime now = LocalDateTime.now();
