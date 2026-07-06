@@ -77,7 +77,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="390" max="32767" attributes="0"/>
+                  <EmptySpace pref="395" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="589" max="-2" attributes="0"/>
@@ -85,7 +85,6 @@
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel3" alignment="0" min="-2" pref="314" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jTextField1" min="-2" pref="549" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -99,6 +98,7 @@
                           <EmptySpace min="-2" pref="729" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel3" alignment="0" min="-2" pref="536" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
               </Group>

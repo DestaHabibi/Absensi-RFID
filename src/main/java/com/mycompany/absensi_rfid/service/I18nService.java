@@ -18,6 +18,15 @@ public class I18nService {
     private static ResourceBundle bundle;
     private static Locale currentLocale;
 
+    public static String get(String key, Object... args) {
+    try {
+        String pattern = bundle.getString(key);
+        return args.length == 0 ? pattern : java.text.MessageFormat.format(pattern, args);
+    } catch (MissingResourceException | NullPointerException e) {
+        return "!" + key + "!";
+    }
+}
+
     public interface I18nChangeListener {
         void onLanguageChanged();
     }

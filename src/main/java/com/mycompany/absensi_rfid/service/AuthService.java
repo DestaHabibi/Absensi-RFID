@@ -14,22 +14,17 @@ import javax.swing.JOptionPane;
 import java.time.LocalDateTime;
 
 public class AuthService {
-
     private final GenericDAO<Admin> adminDAO = new GenericDAO<>("admin", Admin.class);
 
     public void login(String username, String plainPassword, javax.swing.JFrame loginPage) {
-        // Hash password input
         String hashedInput = SecurityUtils.getHash(plainPassword, SecurityUtils.SHA_256);
-
         Admin admin = adminDAO.findOne(Filters.and(
                 Filters.eq("username", username),
                 Filters.eq("password", hashedInput)
         ));
-        
 
         if (admin != null) {
-
-            JOptionPane.showMessageDialog(null, "Selamat Datang, " + admin.getNama());
+            JOptionPane.showMessageDialog(null, I18nService.get("ui.login.welcome", admin.getNama()));
             Dashboard dashboard = new Dashboard(admin);
             dashboard.setLocationRelativeTo(null);
             dashboard.setVisible(true);
@@ -37,8 +32,8 @@ public class AuthService {
             loginPage.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null,
-                    "Username atau Password Salah!",
-                    "Login Gagal",
+                    I18nService.get("ui.login.failed.message"),
+                    I18nService.get("ui.login.failed.title"),
                     JOptionPane.ERROR_MESSAGE);
         }
     }

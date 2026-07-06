@@ -171,7 +171,7 @@ public class LoginPage extends javax.swing.JFrame implements I18nService.I18nCha
         gridBagConstraints.insets = new java.awt.Insets(29, 47, 239, 0);
         jPanel2.add(loginbtn, gridBagConstraints);
 
-        cbLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "en", "ms" }));
+        cbLanguage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "en", "ms", "spy" }));
         cbLanguage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbLanguageActionPerformed(evt);

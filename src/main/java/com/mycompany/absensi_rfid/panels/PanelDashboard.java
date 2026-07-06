@@ -6,6 +6,7 @@ package com.mycompany.absensi_rfid.panels;
 
 import com.mycompany.absensi_rfid.service.KaryawanService;
 import com.mycompany.absensi_rfid.Dialog.TambahKaryawan;
+import com.mycompany.absensi_rfid.service.I18nService;
 import javax.swing.*;
 import java.awt.*;
 
@@ -98,12 +99,12 @@ public class PanelDashboard extends javax.swing.JPanel {
         jPanel4.setPreferredSize(new java.awt.Dimension(861, 85));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
-        jLabel9.setText("Daftar Karyawan");
+        jLabel9.setText(I18nService.get("ui.paneldashboard.daftar"));
 
         tambahBtn.setBackground(new java.awt.Color(43, 121, 221));
         tambahBtn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tambahBtn.setForeground(new java.awt.Color(255, 255, 255));
-        tambahBtn.setText("Tambah");
+        tambahBtn.setText(I18nService.get("ui.paneldashboard.tambah"));
         tambahBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tambahBtnActionPerformed(evt);
@@ -118,7 +119,7 @@ public class PanelDashboard extends javax.swing.JPanel {
 
         cariBtn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cariBtn.setForeground(new java.awt.Color(51, 51, 51));
-        cariBtn.setText("Cari");
+        cariBtn.setText(I18nService.get("ui.paneldashboard.cari"));
         cariBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariBtnActionPerformed(evt);
@@ -128,7 +129,7 @@ public class PanelDashboard extends javax.swing.JPanel {
         refreshBtn.setBackground(new java.awt.Color(67, 224, 103));
         refreshBtn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         refreshBtn.setForeground(new java.awt.Color(255, 255, 255));
-        refreshBtn.setText("Refresh");
+        refreshBtn.setText(I18nService.get("ui.paneldashboard.refresh"));
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshBtnActionPerformed(evt);
@@ -143,9 +144,9 @@ public class PanelDashboard extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(refreshBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tambahBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tambahBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pencarianField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,7 +154,7 @@ public class PanelDashboard extends javax.swing.JPanel {
                         .addGap(34, 34, 34))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addContainerGap(730, Short.MAX_VALUE))))
+                        .addContainerGap(758, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
